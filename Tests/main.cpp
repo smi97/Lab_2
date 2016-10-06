@@ -1,7 +1,11 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "../sources/incr.cpp"
+#include "../include/print_hello_world.h"
 
+int incr(int a)
+{
+    return a++;
+}
 
 TEST_CASE( "Increments are computed", "[increment]" ) {
     REQUIRE( incr(1) == 2 );
