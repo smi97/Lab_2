@@ -2,12 +2,18 @@ cmake_minimum_required(VERSION 3.0.2)
 
 project(hello_world)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+include_directories(include)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/ /Tests/)
+set(SOURCE_EXE examples/main.cpp)
 
-add_library(hello_world STATIC ${CMAKE_CURRENT_SOURCE_DIR}/include/print_hello_world.h Tests/main.cpp)
+set(SOURCE_LIB sources/print_hello_world.cpp)
 
-add_executable(Examples ${CMAKE_CURRENT_SOURCE_DIR} examples/main.cpp)
+set(SOURCE_TEST Tests/main.cpp)
 
-add_executable(Tests ${TESTS_SOURCE} Tests/print_hello_world.cpp Tests/main.cpp)
+add_library(hw STATIC ${SOURCE_LIB})
+
+add_executable(main ${SOURCE_EXE})
+
+add_executable(test ${SOURCE_TEST})
+
+target_link_libraries(main hw)
