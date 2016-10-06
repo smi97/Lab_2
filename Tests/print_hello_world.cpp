@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../surces/incr.cpp"
+#include "../sources/incr.cpp"
 
 
 TEST_CASE( "Increments are computed", "[increment]" ) {
